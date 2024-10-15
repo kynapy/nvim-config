@@ -16,8 +16,10 @@ return {
         })
 
         -- custom mappings
-        vim.keymap.set("n", "<leader>tt", vim.cmd.NvimTreeToggle)
-        vim.keymap.set("n", "<leader>ft", vim.cmd.NvimTreeFocus)
+        vim.keymap.set("n", "<leader>tt", vim.cmd.NvimTreeFindFileToggle, { desc = "Tree Toggle" })
+        vim.keymap.set("n", "<leader>tf", vim.cmd.NvimTreeFocus, { desc = "Tree Focus" })
+        vim.keymap.set("n", "<leader>tc", vim.cmd.NvimTreeCollapse, { desc = "Tree Collapse" })
+        vim.keymap.set("n", "<leader>tr", vim.cmd.NvimTreeRefresh, { desc = "Tree Refresh" })
 
         -- disabling netrw
         vim.g.loaded_netrw = 1
