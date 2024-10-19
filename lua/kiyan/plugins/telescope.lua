@@ -18,5 +18,12 @@ return {
         vim.keymap.set('n', '<leader>ft', "<cmd>TodoTelescope<cr>", { desc = "Find Todos" })
 
         telescope.load_extension("fzf")
+        telescope.setup({
+            defaults = {
+                file_ignore_patterns = {
+                    "node_modules"
+                }
+            }
+        })
     end
 }
