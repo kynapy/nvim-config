@@ -15,6 +15,11 @@ return {
                 italic = false,
                 transparency = false,
             },
+
+            highlight_groups = {
+                Normal = { bg = "#282c34" },
+                NormalNC = { bg = "#282c34" },
+            },
         })
 
 	    vim.cmd.colorscheme("rose-pine")
