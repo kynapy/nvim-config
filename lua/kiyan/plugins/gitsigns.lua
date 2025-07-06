@@ -4,7 +4,7 @@ return {
         local gitsigns = require('gitsigns')
 
         gitsigns.setup({
-            word_diff = true
+            -- Add configuration here
         })
 
         vim.keymap.set('n', '<leader>gb', gitsigns.blame, { desc = "Git Blame" })
