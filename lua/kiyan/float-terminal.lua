@@ -48,5 +48,12 @@ local toggle_terminal = function()
     end
 end
 
+local off_terminal = function ()
+    if vim.api.nvim_win_is_valid(state.floating.win) then
+        vim.api.nvim_win_hide(state.floating.win)
+    end
+end
+
 vim.api.nvim_create_user_command("Floatterminal", toggle_terminal, {})
-vim.keymap.set({ "n", "t" }, "<leader>ft", toggle_terminal, { desc = "Floating terminal" })
+vim.keymap.set({ "n" }, "<leader>ft", toggle_terminal, { desc = "Floating terminal" })
+vim.keymap.set({ "t" }, "<Esc><Esc>", off_terminal, { desc = "Bye Floating terminal" })
