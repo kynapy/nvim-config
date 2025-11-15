@@ -1,37 +1,25 @@
-local function toggle_codecompanion_chat()
-    local api = vim.api
-    for _, win in ipairs(api.nvim_list_wins()) do
-        local buf = api.nvim_win_get_buf(win)
-        if api.nvim_buf_get_option(buf, "filetype") == "codecompanion" then
-            api.nvim_win_close(win, true)
-            return
-        end
-    end
-    vim.cmd("CodeCompanionChat")
-end
-
 return {
-    -- Copilot LSP integration
+    -- Copilot setup 
     {
         "github/copilot.vim",
         dependencies = {
-            "copilotlsp-nvim/copilot-lsp",
+            "copilotlsp-nvim/copilot-lsp",      -- LSP integration
         },
     },
 
-    -- Code Companion for advanced AI code assistance
+    -- Code Companion for AI code assistance
     {
         "olimorris/codecompanion.nvim",
         dependencies = {
-            "j-hui/fidget.nvim", -- Display status
             "nvim-lua/plenary.nvim",
+            "j-hui/fidget.nvim",
         },
         opts = {
             ---@module "codecompanion"
             ---@type CodeCompanion.Config
             adapters = {
                 acp = {
-                    ollama = function ()
+                    ollama = function()
                         return require("codecompanion.adapters").extend("ollama", {
                             schema = {
                                 model = {
@@ -51,28 +39,52 @@ return {
                         name = "copilot",
                         model = "gpt-4.1",
                     },
+
+                    -- Alternative adapter for local Ollama
+                    -- adapter = {
+                    --     name = "ollama",
+                    --     model = "qwen3-coder",
+                    -- }
+
                 },
                 inline = {
                     adapter = {
                         name = "copilot",
                         model = "gpt-4.1",
                     },
-                }
+
+                    -- Alternative adapter for local Ollama
+                    -- adapter = {
+                    --     name = "ollama",
+                    --     model = "qwen3-coder",
+                    -- }
+
+                },
+            },
+            display = {
+                chat = {
+                    -- show_references = true,
+                    -- show_header_separator = false,
+                    -- show_settings = false,
+                    icons = {
+                        tool_success = "󰸞 ",
+                    },
+                    fold_context = true,
+                },
             },
             opts = {
                 log_level = "DEBUG",
             }
         },
         keys = {
-            { "<leader>ac", toggle_codecompanion_chat, desc = "Code Companion Chat" },
-            { "<leader>ai", "<cmd>CodeCompanion inline<cr>", desc = "Code Companion Inline" },
-        }
+            { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Code Companion Chat" },
+        },
     },
 
     -- Markdown rendering in chat buffers
     {
         "MeanderingProgrammer/render-markdown.nvim",
-        ft = { "markdown", "codecompanion" }
+        ft = { "markdown", "codecompanion" },
     },
 
     -- For visual diff when using the inline assistance 
@@ -87,4 +99,3 @@ return {
         end,
     },
 }
-
