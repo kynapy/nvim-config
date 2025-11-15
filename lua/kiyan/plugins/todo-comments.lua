@@ -10,5 +10,8 @@ return {
         local todo_comments = require("todo-comments")
 
         todo_comments.setup()
-    end
+    end,
+    keys = {
+        { "<leader>todo", "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
+    },
 }
