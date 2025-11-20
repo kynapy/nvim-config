@@ -1,15 +1,26 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
+    "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     lazy = false,
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     --    { run: ':TSUpdate' }
 
     config = function()
-        require('nvim-treesitter.configs').setup({
+        require("nvim-treesitter.configs").setup({
 
             -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-            ensure_installed = { "javascript", "typescript", "python", "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+            ensure_installed = {
+                "javascript",
+                "typescript",
+                "python",
+                "c",
+                "lua",
+                "vim",
+                "vimdoc",
+                "query",
+                "markdown",
+                "markdown_inline",
+            },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
@@ -23,7 +34,6 @@ return {
 
             -- If you need to change the installation directory of the parsers (see -> Advanced Setup)
             -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
 
             indent = { enable = true },
             autotag = { enable = true },
@@ -53,5 +63,5 @@ return {
                 additional_vim_regex_highlighting = false,
             },
         })
-    end
+    end,
 }

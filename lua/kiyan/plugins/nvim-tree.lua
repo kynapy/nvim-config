@@ -27,8 +27,7 @@ return {
                         local window_w_int = math.floor(window_w)
                         local window_h_int = math.floor(window_h)
                         local center_x = (screen_w - window_w) / 2
-                        local center_y = ((vim.opt.lines:get() - window_h) / 2)
-                        - vim.opt.cmdheight:get()
+                        local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
                         return {
                             border = "rounded",
                             relative = "editor",
@@ -44,11 +43,11 @@ return {
                 end,
             },
             filters = {
-                dotfiles = true
-            }
+                dotfiles = true,
+            },
         })
 
-        require('nvim-web-devicons').setup({
+        require("nvim-web-devicons").setup({
             -- your personnal icons can go here (to override)
             -- you can specify color or cterm_color instead of specifying both of them
             -- DevIcon will be appended to `name`
@@ -57,41 +56,41 @@ return {
                     icon = "",
                     color = "#428850",
                     cterm_color = "65",
-                    name = "Zsh"
-                }
-            };
+                    name = "Zsh",
+                },
+            },
             -- globally enable different highlight colors per icon (default to true)
             -- if set to false all icons will have the default icon's color
-            color_icons = true;
+            color_icons = true,
             -- globally enable default icons (default to false)
             -- will get overriden by `get_icons` option
-            default = true;
+            default = true,
             -- globally enable "strict" selection of icons - icon will be looked up in
             -- different tables, first by filename, and if not found by extension; this
             -- prevents cases when file doesn't have any extension but still gets some icon
             -- because its name happened to match some extension (default to false)
-            strict = true;
+            strict = true,
             -- set the light or dark variant manually, instead of relying on `background`
             -- (default to nil)
-            variant = "light|dark";
+            variant = "light|dark",
             -- same as `override` but specifically for overrides by filename
             -- takes effect when `strict` is true
             override_by_filename = {
                 [".gitignore"] = {
                     icon = "",
                     color = "#f1502f",
-                    name = "Gitignore"
-                }
-            };
+                    name = "Gitignore",
+                },
+            },
             -- same as `override` but specifically for overrides by extension
             -- takes effect when `strict` is true
             override_by_extension = {
                 ["log"] = {
                     icon = "",
                     color = "#81e043",
-                    name = "Log"
-                }
-            };
+                    name = "Log",
+                },
+            },
             -- same as `override` but specifically for operating system
             -- takes effect when `strict` is true
             override_by_operating_system = {
@@ -101,7 +100,7 @@ return {
                     cterm_color = "248",
                     name = "Apple",
                 },
-            };
+            },
         })
 
         -- custom mappings
@@ -115,4 +114,3 @@ return {
         vim.g.loaded_netrwPlugin = 1
     end,
 }
-

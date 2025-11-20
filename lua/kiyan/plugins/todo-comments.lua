@@ -6,12 +6,9 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
     },
-    config = function ()
+    config = function()
         local todo_comments = require("todo-comments")
 
         todo_comments.setup()
     end,
-    keys = {
-        { "<leader>todo", "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
-    },
 }

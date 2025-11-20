@@ -1,21 +1,25 @@
 return {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
-        'nvim-tree/nvim-web-devicons',
-        'folke/todo-comments.nvim'
+        "nvim-lua/plenary.nvim",
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+        },
+        "nvim-tree/nvim-web-devicons",
+        "folke/todo-comments.nvim",
     },
 
     config = function()
-        local builtin = require('telescope.builtin')
-        local telescope = require('telescope')
+        local builtin = require("telescope.builtin")
+        local telescope = require("telescope")
 
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find File" })
-        vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find Buffer" })
-        vim.keymap.set('n', '<leader>fs', builtin.live_grep, { desc = "Find String" })
-        vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = "Find Current" })
-        vim.keymap.set('n', '<leader>ft', "<cmd>TodoTelescope<cr>", { desc = "Find Todos" })
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find File" })
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffer" })
+        vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Find String" })
+        vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find Current" })
+        vim.keymap.set("n", "<leader>todo", "<cmd>TodoTelescope<cr>", { desc = "Find Todos" })
 
         telescope.load_extension("fzf")
 
@@ -28,16 +32,15 @@ return {
 
         telescope.setup({
             defaults = {
-                file_ignore_patterns = {
-                    "node_modules"
-                },
+                file_ignore_patterns = { "node_modules" },
+                -- layout_strategy = "vertical",  -- Allows us to change the layout
 
                 -- For trouble
                 mappings = {
                     i = { ["<c-t>"] = open_with_trouble },
                     n = { ["<c-t>"] = open_with_trouble },
                 },
-            }
+            },
         })
-    end
+    end,
 }
